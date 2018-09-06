@@ -29,7 +29,7 @@ var sqlmodule = {
                 else{
                // send records as a response
                 //res.send(recordset);
-                  callback(null,recordset);
+                  callback(null,recordset.recordsets[0]);
                 sql.close()
                 }
             });

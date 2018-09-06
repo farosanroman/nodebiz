@@ -1,6 +1,7 @@
 const express=require('express');
 const app=express();
 const SQL = require('./shared/sqlmodule');
+queries=require('./shared/queries');
 //node index.js
 
 app.use(express.json())
@@ -17,7 +18,8 @@ app.get('/',(req,res)=>{
   });
   
   app.get('/cont/comprobante',(req,res)=>{
-    const criteria={qry:"select top 1000 * from cont_diario" }
+    const criteria={qry:queries.comprobante }
+    //console.log(criteria)
     SQL.sqlexecute(criteria, function (err, results) { 
          res.send(results);
     })
@@ -28,10 +30,10 @@ app.get('/',(req,res)=>{
 
     //res.send(row);
     //const criteria={id:"ppa"}
-  const criteria={qry:"MM_CONT_BAL 'INAZZ20',201808,201808 ,0,0,'1442',11,1,4,0,0,0,'0'" }
+  const criteria={qry:queries.balgen }
   SQL.sqlexecute(criteria, function (err, results) { 
      // console.log(results) 
-  res.send(results);
+         res.send(results);
   })
   });
   //app.listen(process.env.PORT || 3000); 
