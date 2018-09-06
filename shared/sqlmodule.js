@@ -1,5 +1,9 @@
 var sqlmodule = {
-    
+    sqlexecute2: function (criteria, callback) {
+
+
+
+    },
     sqlexecute: function (criteria, callback) {
       
         const sql = require("mssql");
