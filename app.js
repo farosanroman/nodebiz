@@ -12,11 +12,11 @@ app.get('/',(req,res)=>{
 app.get('/',(req,res)=>{
     res.send('Hola Biz');
   });
-  app.get('/cont/comprobante',(req,res)=>{
+  app.post('/cont/comprobante',(req,res)=>{
     res.send('get comprobante');
   });
   
-  app.post('/cont/comprobante',(req,res)=>{
+  app.get('/cont/comprobante',(req,res)=>{
     const criteria={qry:"select top 1000 * from cont_diario" }
     SQL.sqlexecute(criteria, function (err, results) { 
          res.send(results);

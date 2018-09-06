@@ -1,6 +1,7 @@
 var sqlmodule = {
    
     sqlexecute: function (criteria, callback) {
+        console.log(criteria)
         const qry=criteria.qry;
         const sql = require("mssql");
         // Configuration object for your database
