@@ -1,7 +1,7 @@
 var sqlmodule = {
    
     sqlexecute: function (criteria, callback) {
-      
+        const qry=criteria.qry;
         const sql = require("mssql");
         // Configuration object for your database
         const config = {
@@ -17,7 +17,8 @@ var sqlmodule = {
             // create Request object
             var request = new sql.Request();
            // query to the database and get the records
-           const qry="MM_CONT_BAL 'INAZZ20',201808,201808 ,0,0,'1442',11,1,4,0,0,0,'0' ";
+           //const qry="MM_CONT_BAL 'INAZZ20',201808,201808 ,0,0,'1442',11,1,4,0,0,0,'0' ";
+           //const qry="select top 1000 * from cont_diario"
             request.query(qry, function (err, recordset) {
                 console.log(recordset)
               if (err) {
