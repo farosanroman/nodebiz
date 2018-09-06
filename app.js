@@ -17,7 +17,7 @@ app.get('/',(req,res)=>{
   });
   
   app.post('/cont/comprobante',(req,res)=>{
-    const criteria={qry:"select top 1000 from cont_diario" }
+    const criteria={qry:"select top 1000 * from cont_diario" }
     SQL.sqlexecute(criteria, function (err, results) { 
          res.send(results);
     })
