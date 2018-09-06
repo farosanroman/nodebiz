@@ -31,6 +31,9 @@ app.get('/',(req,res)=>{
   res.send(results);
   })
   });
-  const port=process.env.PORT || 3000
-app.listen(3000,()=>console.log(`Listening on Port ${port}...`));
+  //app.listen(process.env.PORT || 3000); 
+
+  //  app.listen(process.env.PORT || 4730); 
+   const port=process.env.PORT || 4730
+app.listen(port,()=>console.log(`Listening on Port ${port}...`));
   
