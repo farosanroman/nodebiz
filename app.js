@@ -2,7 +2,7 @@ const express=require('express');
 const app=express();
 const SQL = require('./shared/sqlmodule');
 queries=require('./shared/queries');
-//node index.js
+//node app.js
 
 app.use(express.json())
 app.get('/',(req,res)=>{
@@ -13,8 +13,12 @@ app.get('/',(req,res)=>{
 app.get('/',(req,res)=>{
     res.send('Hola Biz');
   });
-  app.post('/cont/comprobante',(req,res)=>{
-    res.send('get comprobante');
+  app.get('/cont/insert',(req,res)=>{
+    const criteria={qry:queries.insert}
+    console.log(criteria)
+    SQL.sqlinsert(criteria, function (err, results) { 
+      res.send(results);
+ })
   });
   
   app.get('/cont/comprobante',(req,res)=>{

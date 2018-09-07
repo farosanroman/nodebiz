@@ -1,5 +1,38 @@
 var sqlmodule = {
-   
+    sqlinsert: function (criteria, callback) {
+         
+        const qry=criteria.qry;
+        const sql = require("mssql");
+        // Configuration object for your database
+        const config = {
+            user: 'admin',
+            password: 'pag9539961$',
+            server: '206.72.117.220', 
+            database: 'fuentes2015'
+        };
+        sql.connect(config).then(function() {
+            var request = new sql.Request();
+            request.query(qry).then(function(recordset) {
+              console.log('Recordset: ' + recordset);
+              console.log('Affected: ' + request.rowsAffected);
+              var callb={"Recorset":recordset,"Affected":request.rowsAffected}
+              callback(null,callb);
+              sql.close()
+            }).catch(function(err) {
+                callback('Request error: ' + err);
+              console.log('Request error: ' + err);
+              sql.close()
+            });
+          }).catch(function(err) {
+            if (err) {
+                callback(null,{error:'SQL Connection Error: ' + err});
+              console.log('SQL Connection Error: ' + err);
+              sql.close()
+            }
+          });
+
+
+    },
     sqlexecute: function (criteria, callback) {
         console.log(criteria)
         const qry=criteria.qry;
@@ -23,7 +56,7 @@ var sqlmodule = {
             request.query(qry, function (err, recordset) {
                 console.log(recordset)
               if (err) {
-                   callback(error);
+                   callback(null,err);
                    sql.close()
                 }
                 else{
