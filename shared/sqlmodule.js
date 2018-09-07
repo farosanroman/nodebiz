@@ -1,15 +1,17 @@
+const config = {
+    user: 'admin',
+    password: 'pag9539961$',
+    server: '206.72.117.220', 
+    database: 'fuentes2015'
+};
 var sqlmodule = {
+    
     sqlinsert: function (criteria, callback) {
          
         const qry=criteria.qry;
         const sql = require("mssql");
         // Configuration object for your database
-        const config = {
-            user: 'admin',
-            password: 'pag9539961$',
-            server: '206.72.117.220', 
-            database: 'fuentes2015'
-        };
+        
         sql.connect(config).then(function() {
             var request = new sql.Request();
             request.query(qry).then(function(recordset) {
@@ -19,7 +21,7 @@ var sqlmodule = {
               callback(null,callb);
               sql.close()
             }).catch(function(err) {
-                callback('Request error: ' + err);
+                callback(null,{error:'Request error: ' + err});
               console.log('Request error: ' + err);
               sql.close()
             });
@@ -38,12 +40,7 @@ var sqlmodule = {
         const qry=criteria.qry;
         const sql = require("mssql");
         // Configuration object for your database
-        const config = {
-            user: 'admin',
-            password: 'pag9539961$',
-            server: '206.72.117.220', 
-            database: 'fuentes2015'
-        };
+        
         // connect to the database
         
         sql.connect(config, function (err) {
