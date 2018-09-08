@@ -55,10 +55,10 @@ app.get('/',(req,res)=>{
     //res.send(row);
     //const criteria={id:"ppa"}
   const criteria={qry:queries.balgen }
-  SQL.sqlexecute(criteria, function (err, results) { 
+    SQL.sqlexecute(criteria, function (err, results) { 
      // console.log(results) 
          res.send(results);
-  })
+     })
   });
   //app.listen(process.env.PORT || 3000); 
 
