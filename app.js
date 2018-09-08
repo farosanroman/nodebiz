@@ -17,14 +17,18 @@ app.get('/',(req,res)=>{
     console.log(req.query)
     const plan=req.query.plan
     const ta=req.query.ta
-    var qry;
+    var qry,criteria,where;
     if (plan=="auxi"){
-      qry=queries.auxiliares;      
-      qry=qry.replace(/#where#/i, "where tipo='"+ta+"'");
-      console.log(qry)
+      qry=queries.auxiliares;
+      where=  "where tipo='"+ta+"'"    
     }
-    criteria={qry:qry}
-    console.log(criteria)
+    if (plan=="cuenta"){
+      qry=queries.cuentas;  
+      where=  "where auxiliar='"+ta+"'"    
+    }
+      qry=qry.replace(/#where#/i, where);
+      criteria={qry:qry}
+       console.log(criteria)
       SQL.sqlrequest(criteria, function (err, results) { 
          res.send(results);
       })
