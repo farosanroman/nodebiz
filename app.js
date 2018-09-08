@@ -13,12 +13,28 @@ app.get('/',(req,res)=>{
 app.get('/',(req,res)=>{
     res.send('Hola Biz');
   });
+  app.get('/cont/cuentas',(req,res)=>{
+    console.log(req.query)
+    const plan=req.query.plan
+    const ta=req.query.ta
+    var qry;
+    if (plan=="auxi"){
+      qry=queries.auxiliares;      
+      qry=qry.replace(/#where#/i, "where tipo='"+ta+"'");
+      console.log(qry)
+    }
+    criteria={qry:qry}
+    console.log(criteria)
+      SQL.sqlrequest(criteria, function (err, results) { 
+         res.send(results);
+      })
+  });
   app.get('/cont/insert',(req,res)=>{
     const criteria={qry:queries.insert}
     console.log(criteria)
-    SQL.sqlinsert(criteria, function (err, results) { 
-      res.send(results);
- })
+      SQL.sqlrequest(criteria, function (err, results) { 
+         res.send(results);
+      })
   });
   
   app.get('/cont/comprobante',(req,res)=>{
