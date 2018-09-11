@@ -35,7 +35,7 @@ app.get('/',(req,res)=>{
     if (plan=="auxi"){
       qry=queries.auxiliares;
       if (ta!=""){
-          where=  "where tipo='"+ta+"'"   
+         where=  "where tipo='"+ta+"'"   
       } 
     }
 
