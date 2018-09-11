@@ -7,7 +7,8 @@ queries=require('./shared/queries');
 app.use(express.json())
 app.get('/',(req,res)=>{
   res.send("NodeBiz v0.0.0")
-  
+  var ppa=queries.f();
+  console.log(ppa)
 });
 
 app.get('/',(req,res)=>{
