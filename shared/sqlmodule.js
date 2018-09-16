@@ -35,6 +35,16 @@ var sqlmodule = {
 
 
     },
+    /*
+StringBuilder trama = new StringBuilder();
+
+                    trama.Append(user.Id + ",");
+                    trama.Append(user.Login + ",");
+                    trama.Append(user.OrgId + ",");
+                    trama.Append(user.IdMember + ",");
+                    trama.Append(user.DBConn + ",");
+                    trama.Append(user.OrgName + ",");
+                    trama.Append(user.OrgUrl + ",");*/
     sqlinsert: function (criteria, callback) {
          
         const qry=criteria.qry;
