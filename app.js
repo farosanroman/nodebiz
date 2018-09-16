@@ -55,11 +55,7 @@ app.get('/',(req,res)=>{
        // console.log(results) 
            res.send(results);
        })
-       //const row=comprobante.find(c=>c.id===parseInt(req.params.id));
-        //if (!row) res.status(404).send('malo malo');
-  
-      //res.send(row);
-      //const criteria={id:"ppa"}
+    
     });
     app.get('/cont/mayana',(req,res)=>{
       
