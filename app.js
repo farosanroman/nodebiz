@@ -2,12 +2,12 @@ const express=require('express');
 const app=express();
 const SQL = require('./shared/sqlmodule');
 queries=require('./shared/queries');
-//node app.js
+//node app.js   <<<<<<<<<
 
 app.use(express.json())
 app.get('/',(req,res)=>{
   res.send("NodeBiz v0.0.0")
-  var ppa=queries.f();
+  //var ppa=queries.f();
   console.log(ppa)
 });
 

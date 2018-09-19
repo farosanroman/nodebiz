@@ -1,9 +1,11 @@
-const config = {
-    user: 'admin',
-    password: 'pag9539961$',
-    server: '206.72.117.220', 
-    database: 'fuentes2015'
-};
+//const config = {
+//    user: 'admin',
+//    password: 'pag9539961$',
+//    server: '206.72.117.220', 
+//    database: 'fuentes2015'
+//};
+var config = require('./config');
+console.log(config)
 var sqlmodule = {
     
     sqlrequest: function (criteria, callback) {
@@ -36,6 +38,12 @@ var sqlmodule = {
 
     },
     /*
+    select o.orgid, o.orgname, u.UserId,
+u.UserLogin, u.useriddb 
+from org o
+join users u on u.userorgid=o.orgid 
+where o.orgid=72
+order by useriddb
 StringBuilder trama = new StringBuilder();
 
                     trama.Append(user.Id + ",");
