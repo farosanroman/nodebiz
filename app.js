@@ -11,8 +11,38 @@ app.get('/',(req,res)=>{
   console.log(ppa)
 });
 
-app.get('/',(req,res)=>{
+  app.get('/',(req,res)=>{
     res.send('Hola Biz');
+  });
+  app.get('/autenticacion',(req,res)=>{
+    const criteria={login:"fuentes",pwd:"fuentes"}
+    qry=queries.qryautenticacion(criteria)
+    const criteriaqry={qry:qry}
+    SQL.sqlrequest(criteriaqry, function (err, results) { 
+     
+     var aut=[{"orgid":72,"orgname":"FUENTES2015","UserId":3083,"UserLogin":"fuentes","UserPassword":"fuentes","useriddb":1,"orgdsn":"server=206.72.117.220;driver={sql server};uid=fuentes2015log;pwd=fuentes2015pwd123$;database=fuentes2015;"}]
+     var dsn=aut[0].orgdsn;
+     
+     dsn=dsn.split(';')
+     console.log("dsn") 
+     console.log(results)
+     console.log(dsn) 
+     var server= dsn[0].replace("server=","");
+     var uid= dsn[2].replace("uid=","");
+     var pwd= dsn[3].replace("pwd=","");
+     var db=dsn[4].replace("database=","");     
+     var user={userid:results[0].UserId,username:results[0].UserName,userlogin:results[0].UserLogin,userpwd:results[0].UserPassword,usermail:results[0].UserEmail, orgid:results[0].orgid,orgname:results[0].orgname,server:server,uid:uid,pwd:pwd,db:db}
+     console.log(user)
+     res.send(user);
+     // trama.Append(user.Id + ",");
+     //               trama.Append(user.Login + ",");
+     //               trama.Append(user.OrgId + ",");
+     //               trama.Append(user.IdMember + ",");
+     //               trama.Append(user.DBConn + ",");
+     //               trama.Append(user.OrgName + ",");
+     //               trama.Append(user.OrgUrl + ",");*/
+    })
+    
   });
   app.get('/cont/cuentas',(req,res)=>{
     console.log("/cont/cuentas")

@@ -1,5 +1,9 @@
 
 var queries = {
+    qryautenticacion(criteria ){ 
+        const ret="select o.orgid, o.orgname, u.UserId,u.UserName, u.UserLogin,u.UserPassword, u.useriddb,u.UserEmail,u.UserDBConn,o.orgdsn from org o  join users u on u.userorgid=o.orgid  where  UserLogin='fuentes' and UserPassword='fuentes'  order by useriddb";    
+       return ret
+    },
     qrytipoauxiliares(criteria ){ 
     const qry=this.ta;
     //qry=queries.auxiliares;  
