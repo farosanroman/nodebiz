@@ -31,7 +31,7 @@ app.get('/',(req,res)=>{
      var uid= dsn[2].replace("uid=","");
      var pwd= dsn[3].replace("pwd=","");
      var db=dsn[4].replace("database=","");     
-     var user={userid:results[0].UserId,username:results[0].UserName,userlogin:results[0].UserLogin,userpwd:results[0].UserPassword,usermail:results[0].UserEmail, orgid:results[0].orgid,orgname:results[0].orgname,server:server,uid:uid,pwd:pwd,db:db}
+     var user={userid:results[0].UserId,username:results[0].UserName,userlogin:results[0].UserLogin,userpwd:results[0].UserPassword,usermail:results[0].UserEmail, orgid:results[0].orgid,orgname:results[0].orgname,server:server,user:uid,password:pwd,database:db}
      console.log(user)
      res.send(user);
      // trama.Append(user.Id + ",");
