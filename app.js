@@ -3,6 +3,7 @@ const app=express();
 const SQL = require('./shared/sqlmodule');
 queries=require('./shared/queries');
 //node app.js   <<<<<<<<<
+//oJo Application Settings WEBSITE_NODE_DEFAULT_VERSION 6.9.1  oJo oJo
 
 app.use(express.json())
 app.get('/',(req,res)=>{
